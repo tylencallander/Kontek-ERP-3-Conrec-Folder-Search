@@ -32,6 +32,7 @@ def main():
 
 # Creating projects.json and errors.json files to store parsed data
 
+
     print("\nParsing Complete!\n")
     print(f"Logged {len(projects)} found serial number folders to projects.json")
     print(f"Logged {len(errors.get('SERIALNUMBERFOLDERNOTFOUND', []))} missing serial number folders to errors.json")
