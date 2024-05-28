@@ -31,7 +31,7 @@ def main():
     excel_project_numbers = extract_serial_numbers_from_excel(excel_file_path)
 
 # Creating serialnum.json and errors.json files to store parsed data
-  
+
     print("\nParsing Complete!\n")
     print(f"Logged {len(serialnums)} found serial number folders to serialnum.json")
     print(f"Logged {len(errors.get('SERIALNUMBERFOLDERNOTFOUND', []))} missing serial number folders to errors.json")
