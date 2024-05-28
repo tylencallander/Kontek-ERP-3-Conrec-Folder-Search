@@ -3,12 +3,12 @@ import json
 import openpyxl
 
 basepath = 'P:/CONREC/ARCHIVE'
-projects = {}
+serialnums = {}
 errors = {}
 
-# Extracts project numbers, including those with suffixes from the Excel file
+# Extracts serial numbers, from the Excel file
 
-def extract_project_numbers_from_excel(excel_file_path):
+def extract_serial_numbers_from_excel(excel_file_path):
     try:
         wb = openpyxl.load_workbook(excel_file_path, data_only=True)
         ws = wb.active
@@ -28,13 +28,13 @@ def extract_project_numbers_from_excel(excel_file_path):
 def main():
     print("\nParsing all CONREC Files in KONTEK's Network...\n")
     excel_file_path = "P:/CONREC/Serial Number List.xlsx"
-    excel_project_numbers = extract_project_numbers_from_excel(excel_file_path)
+    excel_project_numbers = extract_serial_numbers_from_excel(excel_file_path)
 
 # Creating projects.json and errors.json files to store parsed data
 
 
     print("\nParsing Complete!\n")
-    print(f"Logged {len(projects)} found serial number folders to projects.json")
+    print(f"Logged {len(serialnums)} found serial number folders to projects.json")
     print(f"Logged {len(errors.get('SERIALNUMBERFOLDERNOTFOUND', []))} missing serial number folders to errors.json")
 
 if __name__ == "__main__":
