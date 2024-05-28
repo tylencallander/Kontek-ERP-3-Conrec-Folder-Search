@@ -30,11 +30,10 @@ def main():
     excel_file_path = "P:/CONREC/Serial Number List.xlsx"
     excel_project_numbers = extract_serial_numbers_from_excel(excel_file_path)
 
-# Creating projects.json and errors.json files to store parsed data
-
+# Creating serialnum.json and errors.json files to store parsed data
 
     print("\nParsing Complete!\n")
-    print(f"Logged {len(serialnums)} found serial number folders to projects.json")
+    print(f"Logged {len(serialnums)} found serial number folders to serialnum.json")
     print(f"Logged {len(errors.get('SERIALNUMBERFOLDERNOTFOUND', []))} missing serial number folders to errors.json")
 
 if __name__ == "__main__":
