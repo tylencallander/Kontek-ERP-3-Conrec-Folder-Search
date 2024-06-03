@@ -6,7 +6,7 @@ basepath = 'P:/CONREC/ARCHIVE'
 serialnums = {}
 errors = {}
 
-# Extracts serial numbers, from the Excel file
+# Extracts serial numbers, from the Excel file Testing
 
 def extract_serial_numbers_from_excel(excel_file_path):
     try:
