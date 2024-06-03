@@ -23,8 +23,6 @@ def extract_serial_numbers_from_excel(excel_file_path):
         print(f"Error reading from Excel: {e}")
         return set()
 
-# Print comments for clarity, but can be omitted
-
 def main():
     print("\nParsing all CONREC Files in KONTEK's Network...\n")
     excel_file_path = "P:/CONREC/Serial Number List.xlsx"
