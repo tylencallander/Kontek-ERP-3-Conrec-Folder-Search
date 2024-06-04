@@ -28,11 +28,9 @@ def check_serial_number_folders(base_path, serial_numbers):
             for customer_folder in os.listdir(letter_path):
                 customer_path = os.path.join(letter_path, customer_folder)
                 if os.path.isdir(customer_path):
-                    # Check each item inside the customer folder
                     for item in os.listdir(customer_path):
                         full_path = os.path.join(customer_path, item)
-                        # Split the item name to handle cases where the serial number is followed by additional text
-                        serial_candidate = item.split()[0]  # Assuming the serial number is always the first part before a space
+                        serial_candidate = item.split()[0] 
                         if serial_candidate.isdigit() and serial_candidate in serial_numbers:
                             found_serial_numbers[serial_candidate] = {
                                 "serialnumber": serial_candidate,
