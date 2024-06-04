@@ -3,7 +3,6 @@ import json
 import openpyxl
 
 def extract_serial_numbers_from_excel(excel_file_path):
-    """Extract serial numbers from the provided Excel file."""
     try:
         wb = openpyxl.load_workbook(excel_file_path, data_only=True)
         ws = wb.active
@@ -19,7 +18,6 @@ def extract_serial_numbers_from_excel(excel_file_path):
         return set()
 
 def check_serial_number_folders(base_path, serial_numbers):
-    """Check for folders matching the serial numbers extracted from Excel within customer folders."""
     found_serial_numbers = {}
     errors = {}
     for letter in os.listdir(base_path):
