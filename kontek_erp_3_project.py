@@ -2,6 +2,8 @@ import os
 import json
 import openpyxl
 
+# Extracts project numbers from the Excel file.
+
 def extract_serial_numbers_from_excel(excel_file_path):
     try:
         wb = openpyxl.load_workbook(excel_file_path, data_only=True)
@@ -16,6 +18,8 @@ def extract_serial_numbers_from_excel(excel_file_path):
     except Exception as e:
         print(f"Error reading from Excel: {e}")
         return set()
+    
+# Checks through the network folders to find serial number folders and logs them if they match the serial numbers found in the Excel file.
 
 def check_serial_number_folders(base_path, serial_numbers):
     found_serial_numbers = {}
@@ -48,6 +52,8 @@ def main():
     print("\nParsing all CONREC Files in KONTEK's Network...\n")
     serial_numbers = extract_serial_numbers_from_excel(excel_file_path)
     serialnums, errors = check_serial_number_folders(basepath, serial_numbers)
+
+# Creating projects.json and errors.json files to store parsed data
 
     with open("serialnum.json", "w") as f:
         json.dump(serialnums, f, indent=4)
