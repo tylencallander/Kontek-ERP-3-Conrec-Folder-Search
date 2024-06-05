@@ -66,3 +66,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Exited with 516 logged S/N's and 29 errors.
