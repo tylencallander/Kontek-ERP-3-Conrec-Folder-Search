@@ -2,7 +2,7 @@ import os
 import json
 import openpyxl
 
-# Extracts project numbers from the Excel file.
+# Extracts project numbers from the Excel file
 
 def extract_serial_numbers_from_excel(excel_file_path):
     try:
@@ -19,7 +19,7 @@ def extract_serial_numbers_from_excel(excel_file_path):
         print(f"Error reading from Excel: {e}")
         return set()
     
-# Checks through the network folders to find serial number folders and logs them if they match the serial numbers found in the Excel file.
+# Checks through the network folders to find serial number folders and logs them if they match the serial numbers found in the Excel file
 
 def check_serial_number_folders(base_path, serial_numbers):
     found_serial_numbers = {}
