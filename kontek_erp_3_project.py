@@ -46,7 +46,7 @@ def check_serial_number_folders(base_path, serial_numbers):
     return found_serial_numbers, errors
 
 def main():
-    basepath = 'P:/CONREC/CUSTOMERS'
+    basepath = 'P:/CONREC/CUSTOMERS' # ONLY DID CUSTOMERS FOLDER SERIAL NUMBER
     excel_file_path = "P:/CONREC/Serial Number List.xlsx"
 
     print("\nParsing all CONREC Files in KONTEK's Network...\n")
@@ -66,5 +66,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# Exited with 516 logged S/N's and 29 errors.
