@@ -55,7 +55,7 @@ def main():
 
 # Creating projects.json and errors.json files to store parsed data
 
-    with open("serialnum.json", "w") as f:
+    with open("projects.json", "w") as f:
         json.dump(serialnums, f, indent=4)
     with open("errors.json", "w") as f:
         json.dump(errors, f, indent=4)
