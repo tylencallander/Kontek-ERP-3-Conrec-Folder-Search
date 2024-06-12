@@ -35,9 +35,9 @@ def check_serial_number_folders(base_path, serial_numbers):
                         serial_candidate = item.split()[0] 
                         if serial_candidate.isdigit() and serial_candidate in serial_numbers:
                             found_serial_numbers[serial_candidate] = {
-                                "serialnumber": serial_candidate,
-                                "serialfullpath": full_path,
-                                "serialpath": full_path.split("\\")
+                                "projectnumber": serial_candidate,
+                                "projectfullpath": full_path,
+                                "projectpath": full_path.split("\\")
                             }
                             print(f"Found and logged serial number: {serial_candidate} at {full_path}")
                         elif serial_candidate.isdigit() and len(serial_candidate) <= 8 and serial_candidate not in serial_numbers:
