@@ -9,7 +9,7 @@ def extract_serial_numbers_from_excel(excel_file_path):
         wb = openpyxl.load_workbook(excel_file_path, data_only=True)
         ws = wb.active
         serial_numbers = set()
-        for row in ws.iter_rows(min_row=3, min_col=1, max_col=1, values_only=True):
+        for row in ws.iter_rows(min_row=2, min_col=2, max_col=2, values_only=True):
             cell_value = str(row[0]).strip().upper() if row[0] else ''
             if cell_value.isdigit() and len(cell_value) <= 8:
                 serial_numbers.add(cell_value)
@@ -47,7 +47,7 @@ def check_serial_number_folders(base_path, serial_numbers):
 
 def main():
     basepath = 'P:/CONREC/CUSTOMERS' # ONLY DID CUSTOMERS FOLDER SERIAL NUMBER
-    excel_file_path = "P:/CONREC/Serial Number List.xlsx"
+    excel_file_path = "P:/CONREC/CONREC PROJECT SERIAL NUMBERS.xlsx"
 
     print("\nParsing all CONREC Files in KONTEK's Network...\n")
     serial_numbers = extract_serial_numbers_from_excel(excel_file_path)
