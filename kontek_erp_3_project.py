@@ -1,5 +1,5 @@
-import os
 import json
+import os
 import openpyxl
 
 # Extracts project numbers from the Excel file
@@ -18,7 +18,7 @@ def extract_serial_numbers_from_excel(excel_file_path):
     except Exception as e:
         print(f"Error reading from Excel: {e}")
         return set()
-    
+
 # Checks through the network folders to find serial number folders and logs them if they match the serial numbers found in the Excel file
 
 def check_serial_number_folders(base_path, serial_numbers):
@@ -32,7 +32,7 @@ def check_serial_number_folders(base_path, serial_numbers):
                 if os.path.isdir(customer_path):
                     for item in os.listdir(customer_path):
                         full_path = os.path.join(customer_path, item)
-                        serial_candidate = item.split()[0] 
+                        serial_candidate = item.split()[0]
                         if serial_candidate.isdigit() and serial_candidate in serial_numbers:
                             found_serial_numbers[serial_candidate] = {
                                 "projectnumber": serial_candidate,
@@ -42,26 +42,26 @@ def check_serial_number_folders(base_path, serial_numbers):
                             print(f"Found and logged serial number: {serial_candidate} at {full_path}")
                         elif serial_candidate.isdigit() and len(serial_candidate) <= 8 and serial_candidate not in serial_numbers:
                             errors.setdefault("SERIALNUMBERNOTINSPREADSHEET", []).append(serial_candidate)
-
     return found_serial_numbers, errors
 
 def main():
-    basepath = 'P:/CONREC/CUSTOMERS' # ONLY DID CUSTOMERS FOLDER SERIAL NUMBER
+    basepath = 'P:/CONREC/CUSTOMERS'
     excel_file_path = "P:/CONREC/CONREC PROJECT SERIAL NUMBERS.xlsx"
-
     print("\nParsing all CONREC Files in KONTEK's Network...\n")
     serial_numbers = extract_serial_numbers_from_excel(excel_file_path)
     serialnums, errors = check_serial_number_folders(basepath, serial_numbers)
+    
+# Added a sorting algorithm to sort the serial numbers numerically
 
-# Creating projects.json and errors.json files to store parsed data
+    sorted_serialnums = dict(sorted(serialnums.items(), key=lambda x: int(x[0])))
 
     with open("projects.json", "w") as f:
-        json.dump(serialnums, f, indent=4)
+        json.dump(sorted_serialnums, f, indent=4)
     with open("errors.json", "w") as f:
         json.dump(errors, f, indent=4)
 
     print("\nParsing Complete!\n")
-    print(f"Logged {len(serialnums)} found serial number folders to serialnum.json")
+    print(f"Logged {len(serialnums)} found serial number folders to projects.json")
     print(f"Logged {len(errors.get('SERIALNUMBERNOTINSPREADSHEET', []))} serial numbers not in spreadsheet to errors.json")
 
 if __name__ == "__main__":
